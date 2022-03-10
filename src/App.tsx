@@ -14,15 +14,27 @@ import { CycleHoliday } from "./components/CycleHoliday";
 
 import { Counter } from "./components/Counter";
 
+import { DoubleHalf } from "./bad-components/DoubleHalf";
+
+import { ColoredBox } from "./bad-components/ColoredBox";
+import { ShoveBox } from "./bad-components/ShoveBox";
+import { ChooseTeam } from "./bad-components/ChooseTeam";
+
 function App(): JSX.Element {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>
-                    UD CISC275 with React Hooks and TypeScript, Yuchen Zhang.
-                    Hello World
-                </h1>
+                UD CISC275 with React Hooks and TypeScript
+                <h1>This is also a header</h1>
             </header>
+            <hr></hr>
+            <DoubleHalf></DoubleHalf>
+            <hr></hr>
+            <ChooseTeam></ChooseTeam>
+            <hr></hr>
+            <ColoredBox></ColoredBox>
+            <hr></hr>
+            <ShoveBox></ShoveBox>
             <hr></hr>
             <Counter></Counter>
             <hr />
