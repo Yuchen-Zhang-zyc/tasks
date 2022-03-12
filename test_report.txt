@@ -14,25 +14,7 @@ PASS src/components/ChangeType.test.tsx
 PASS src/components/CycleHoliday.test.tsx
 PASS src/components/Counter.test.tsx
 PASS src/components/RevealAnswer.test.tsx
-FAIL src/bad-components/ColoredBox.test.tsx
-  ● ColoredBox Component tests › Clicking the button advances the color.
-
-    expect(element).toHaveStyle()
-
-    - Expected
-
-    - backgroundColor: blue;
-
-      17 |         const nextColor = screen.getByRole("button");
-      18 |         nextColor.click();
-    > 19 |         expect(screen.getByTestId("colored-box")).toHaveStyle({
-         |                                                   ^
-      20 |             backgroundColor: "blue"
-      21 |         });
-      22 |         nextColor.click();
-
-      at Object.<anonymous> (src/bad-components/ColoredBox.test.tsx:19:51)
-
+PASS src/bad-components/ColoredBox.test.tsx
 PASS src/bad-components/ShoveBox.test.tsx
 FAIL src/text.test.tsx
   ● renders the text 'Hello World' somewhere
@@ -365,14 +347,14 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|-------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------|---------|----------|---------|---------|-------------------
-All files             |   96.65 |    91.22 |     100 |   96.51 |                   
+All files             |   96.66 |    91.22 |     100 |   96.51 |                   
  src                  |   95.94 |    90.81 |     100 |   95.74 |                   
   App.tsx             |     100 |      100 |     100 |     100 |                   
   arrays.ts           |   97.95 |      100 |     100 |   97.82 | 14                
   functions.ts        |   81.48 |    81.25 |     100 |   81.48 | 25,31,34,39,73    
   nested.ts           |     100 |      100 |     100 |     100 |                   
   objects.ts          |     100 |      100 |     100 |     100 |                   
- src/bad-components   |   96.66 |       50 |     100 |   96.55 |                   
+ src/bad-components   |   96.77 |       50 |     100 |   96.55 |                   
   ChooseTeam.tsx      |     100 |       50 |     100 |     100 | 17                
   ColoredBox.tsx      |     100 |      100 |     100 |     100 |                   
   DoubleHalf.tsx      |     100 |      100 |     100 |     100 |                   
@@ -390,8 +372,8 @@ All files             |   96.65 |    91.22 |     100 |   96.51 |
   question.ts         |       0 |        0 |       0 |       0 |                   
 ----------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 2 failed, 14 passed, 16 total
-Tests:       2 failed, 109 passed, 111 total
+Test Suites: 1 failed, 15 passed, 16 total
+Tests:       1 failed, 110 passed, 111 total
 Snapshots:   0 total
-Time:        9.532 s
+Time:        11.532 s
 Ran all test suites.
