@@ -347,14 +347,14 @@ PASS src/App.test.tsx
 ----------------------|---------|----------|---------|---------|-------------------
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------|---------|----------|---------|---------|-------------------
-All files             |   96.66 |    91.22 |     100 |   96.51 |                   
- src                  |   95.94 |    90.81 |     100 |   95.74 |                   
+All files             |   98.97 |    98.78 |     100 |   98.94 |                   
+ src                  |   99.26 |      100 |     100 |   99.22 |                   
   App.tsx             |     100 |      100 |     100 |     100 |                   
   arrays.ts           |   97.95 |      100 |     100 |   97.82 | 14                
-  functions.ts        |   81.48 |    81.25 |     100 |   81.48 | 25,31,34,39,73    
+  functions.ts        |     100 |      100 |     100 |     100 |                   
   nested.ts           |     100 |      100 |     100 |     100 |                   
   objects.ts          |     100 |      100 |     100 |     100 |                   
- src/bad-components   |   96.77 |       50 |     100 |   96.55 |                   
+ src/bad-components   |   96.55 |       50 |     100 |   96.55 |                   
   ChooseTeam.tsx      |     100 |       50 |     100 |     100 | 17                
   ColoredBox.tsx      |     100 |      100 |     100 |     100 |                   
   DoubleHalf.tsx      |     100 |      100 |     100 |     100 |                   
@@ -375,5 +375,5 @@ All files             |   96.66 |    91.22 |     100 |   96.51 |
 Test Suites: 1 failed, 15 passed, 16 total
 Tests:       1 failed, 110 passed, 111 total
 Snapshots:   0 total
-Time:        11.532 s
+Time:        12.189 s
 Ran all test suites.
