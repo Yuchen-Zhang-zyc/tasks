@@ -1,21 +1,12 @@
 import React from "react";
-
 import "./App.css";
-
 import { ChangeType } from "./components/ChangeType";
-
 import { RevealAnswer } from "./components/RevealAnswer";
-
 import { StartAttempt } from "./components/StartAttempt";
-
 import { TwoDice } from "./components/TwoDice";
-
 import { CycleHoliday } from "./components/CycleHoliday";
-
 import { Counter } from "./components/Counter";
-
 import { DoubleHalf } from "./bad-components/DoubleHalf";
-
 import { ColoredBox } from "./bad-components/ColoredBox";
 import { ShoveBox } from "./bad-components/ShoveBox";
 import { ChooseTeam } from "./bad-components/ChooseTeam";
@@ -30,12 +21,8 @@ function App(): JSX.Element {
         <div className="App">
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript
-                <h1>This is also a header</h1>
             </header>
             <hr></hr>
-<<<<<<< HEAD
-            <DoubleHalf></DoubleHalf>
-=======
             <CheckAnswer expectedAnswer="42"></CheckAnswer>
             <hr></hr>
             <GiveAttempts></GiveAttempts>
@@ -49,8 +36,7 @@ function App(): JSX.Element {
                 expectedAnswer="b"
             ></MultipleChoiceQuestion>
             <hr></hr>
-            {/* <DoubleHalf></DoubleHalf> */}
->>>>>>> upstream/task-forms
+            <DoubleHalf></DoubleHalf>
             <hr></hr>
             <ChooseTeam></ChooseTeam>
             <hr></hr>
