@@ -4,22 +4,32 @@ import { Form } from "react-bootstrap";
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
-export function CheckAnswer({
+
+export function MultipleChoiceQuestion({
+    options,
     expectedAnswer
 }: {
+    options: string[];
     expectedAnswer: string;
 }): JSX.Element {
-    const [answer, setAnswer] = useState<string>("");
+    const [selected, setSelected] = useState<string>(options[0]);
 
-    function updateAnswer(event: ChangeEvent) {
-        setAnswer(event.target.value);
-    }
-
+    const changeMCQ = (e: ChangeEvent) => {
+        setSelected(e.target.value);
+    };
     return (
         <div>
-            <h3>Check Answer</h3>
-            <Form.Control value={answer} onChange={updateAnswer} />
-            <div>Your answer is {answer === expectedAnswer ? "✔️" : "❌"}.</div>
+            <h3>Multiple Choice Question</h3>
+            <Form.Group controlId="choiceDropdown">
+                <Form.Select value={selected} onChange={changeMCQ}>
+                    {options.map((choice: string) => (
+                        <option key={choice} value={choice}>
+                            {choice}
+                        </option>
+                    ))}
+                </Form.Select>
+            </Form.Group>
+            {selected === expectedAnswer ? "✔️" : "❌"}
         </div>
     );
 }
