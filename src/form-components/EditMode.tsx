@@ -1,91 +1,105 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 
-type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+type ChangeEvent = React.ChangeEvent<
+    HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
+>;
 
-interface visible {
-    visible: boolean;
-    setVisible: (visible: boolean) => void;
-}
-
-interface name {
+function ViewMode({
+    name,
+    isStudent
+}: {
     name: string;
-    setName: (name: string) => void;
-}
-
-interface student {
-    student: boolean;
-    setStudent: (student: boolean) => void;
-}
-
-function UpdateName({ name, setName }: name): JSX.Element {
+    isStudent: boolean;
+}): JSX.Element {
     return (
         <div>
-            <Form.Control
-                value={name}
-                onChange={(event: ChangeEvent) => setName(event.target.value)}
-            />
+            {name} is {isStudent ? " " : "not "}a student.
         </div>
     );
 }
 
-function UpdateVisibility({ visible, setVisible }: visible): JSX.Element {
-    function updatevisibility(event: ChangeEvent) {
-        setVisible(event.target.checked);
-    }
-    return (
-        <div>
-            <Form.Check
-                type="switch"
-                id="is-visible"
-                label={visible ? "EditMode On" : "EditMode Off"}
-                checked={visible}
-                onChange={updatevisibility}
-            />
-        </div>
-    );
-}
-
-function UpdateStudent({ student, setStudent }: student): JSX.Element {
-    function updatestudent(event: ChangeEvent) {
+function SwitchStudent({
+    isStudent,
+    setStudent
+}: {
+    isStudent: boolean;
+    setStudent: (newVal: boolean) => void;
+}): JSX.Element {
+    function updateStudent(event: React.ChangeEvent<HTMLInputElement>) {
         setStudent(event.target.checked);
     }
     return (
         <div>
             <Form.Check
                 type="switch"
-                id="is-student"
-                label="Are you a student?"
-                checked={student}
-                onChange={updatestudent}
-            />
+                id="check-student"
+                label="Student?"
+                checked={isStudent}
+                onChange={updateStudent}
+            ></Form.Check>
+        </div>
+    );
+}
+
+function StudentForm({
+    name,
+    setName,
+    isStudent,
+    setStudent
+}: {
+    name: string;
+    setName: (newVal: string) => void;
+    isStudent: boolean;
+    setStudent: (newVal: boolean) => void;
+}): JSX.Element {
+    function updateName(event: ChangeEvent) {
+        setName(event.target.value);
+    }
+    return (
+        <div>
+            <Form.Group controlId="formStudentName">
+                <Form.Label>Enter Name:</Form.Label>
+                <Form.Control value={name} onChange={updateName}></Form.Control>
+            </Form.Group>
+            <div>
+                <SwitchStudent
+                    isStudent={isStudent}
+                    setStudent={setStudent}
+                ></SwitchStudent>
+            </div>
         </div>
     );
 }
 
 export function EditMode(): JSX.Element {
-    const [visible, setVisible] = useState<boolean>(false);
+    const [editMode, setEditMode] = useState<boolean>(false);
     const [name, setName] = useState<string>("Your Name");
-    const [student, setStudent] = useState<boolean>(true);
+    const [isStudent, setStudent] = useState<boolean>(true);
+
+    function updateEditMode(event: React.ChangeEvent<HTMLInputElement>) {
+        setEditMode(event.target.checked);
+    }
     return (
         <div>
             <h3>Edit Mode</h3>
-            {name} is {student === false ? " not" : ""} a student.
-            <div>
-                <UpdateVisibility
-                    visible={visible}
-                    setVisible={setVisible}
-                ></UpdateVisibility>{" "}
-                {visible && (
-                    <div>
-                        <UpdateName name={name} setName={setName}></UpdateName>
-                        <UpdateStudent
-                            student={student}
-                            setStudent={setStudent}
-                        ></UpdateStudent>
-                    </div>
-                )}
-            </div>
+            {editMode ? (
+                <StudentForm
+                    name={name}
+                    setName={setName}
+                    isStudent={isStudent}
+                    setStudent={setStudent}
+                />
+            ) : (
+                <ViewMode name={name} isStudent={isStudent} />
+            )}
+            <Form.Check
+                type="switch"
+                id="edit-check"
+                label="Edit Mode"
+                checked={editMode}
+                onChange={updateEditMode}
+            />
         </div>
     );
 }

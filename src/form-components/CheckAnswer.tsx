@@ -4,22 +4,26 @@ import { Form } from "react-bootstrap";
 type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
+
 export function CheckAnswer({
     expectedAnswer
 }: {
     expectedAnswer: string;
 }): JSX.Element {
-    const [answer, setAnswer] = useState<string>("");
+    const [input, userInput] = useState<string>("");
 
-    function updateAnswer(event: ChangeEvent) {
-        setAnswer(event.target.value);
+    function changeInput(event: ChangeEvent) {
+        userInput(event.target.value);
     }
-
     return (
         <div>
             <h3>Check Answer</h3>
-            <Form.Control value={answer} onChange={updateAnswer} />
-            <div>Your answer is {answer === expectedAnswer ? "✔️" : "❌"}.</div>
+            <Form.Group controlId="formCheckAnswer">
+                <Form.Label>Check your answer here: </Form.Label>
+                <Form.Control value={input} onChange={changeInput} />
+            </Form.Group>
+            <option> Your answer is: </option>
+            {input === expectedAnswer ? "✔️" : "❌"}
         </div>
     );
 }

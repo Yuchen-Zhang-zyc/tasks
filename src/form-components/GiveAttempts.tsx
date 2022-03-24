@@ -6,42 +6,31 @@ type ChangeEvent = React.ChangeEvent<
 >;
 
 export function GiveAttempts(): JSX.Element {
-    const [leftattempts, setLeftattempts] = useState<string>("3");
-    const [newattempts, setNewattempts] = useState<string>("0");
-    const add = parseInt(newattempts) + parseInt(leftattempts);
-    const reduceAttempts = () =>
-        setLeftattempts((parseInt(leftattempts) - 1).toString());
-    const makegain = () =>
-        newattempts === ""
-            ? setLeftattempts(leftattempts)
-            : setLeftattempts(add.toString());
-
+    const [attemptsLeft, setAttemptsLeft] = useState<number>(3);
+    const [attemptsReq, setAttemptsReq] = useState<number>(0);
     return (
         <div>
-            <div>
-                <h3>Give Attempts</h3>
+            <h3>Give Attempts</h3>
+            <Form.Group controlId="requestedAttempts">
+                <Form.Label>Number of Requested Attempts:</Form.Label>
                 <Form.Control
                     type="number"
-                    value={newattempts}
+                    value={attemptsReq}
                     onChange={(event: ChangeEvent) =>
-                        setNewattempts(event.target.value)
+                        setAttemptsReq(parseInt(event.target.value))
                     }
                 />
-            </div>
-            <div>
-                <span>
-                    <Button
-                        onClick={reduceAttempts}
-                        disabled={parseInt(leftattempts) === 0}
-                    >
-                        use
-                    </Button>
-                </span>
-                <span>
-                    <Button onClick={makegain}>gain</Button>
-                </span>
-            </div>
-            <div>You have {leftattempts} attempts left.</div>
+            </Form.Group>
+            <Button
+                onClick={() => setAttemptsLeft(attemptsLeft - 1)}
+                disabled={attemptsLeft === 0}
+            >
+                Use
+            </Button>
+            <Button onClick={() => setAttemptsLeft(attemptsLeft + attemptsReq)}>
+                Gain
+            </Button>
+            Number of Attempts Left: {attemptsLeft}
         </div>
     );
 }
