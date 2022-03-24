@@ -5,31 +5,25 @@ type ChangeEvent = React.ChangeEvent<
     HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
 >;
 
-export function MultipleChoiceQuestion({
-    options,
+export function CheckAnswer({
     expectedAnswer
 }: {
-    options: string[];
     expectedAnswer: string;
 }): JSX.Element {
-    const [selected, setSelected] = useState<string>(options[0]);
+    const [input, userInput] = useState<string>("");
 
-    const changeMCQ = (e: ChangeEvent) => {
-        setSelected(e.target.value);
-    };
+    function changeInput(event: ChangeEvent) {
+        userInput(event.target.value);
+    }
     return (
         <div>
-            <h3>Multiple Choice Question</h3>
-            <Form.Group controlId="choiceDropdown">
-                <Form.Select value={selected} onChange={changeMCQ}>
-                    {options.map((choice: string) => (
-                        <option key={choice} value={choice}>
-                            {choice}
-                        </option>
-                    ))}
-                </Form.Select>
+            <h3>Check Answer</h3>
+            <Form.Group controlId="formCheckAnswer">
+                <Form.Label>Check your answer here: </Form.Label>
+                <Form.Control value={input} onChange={changeInput} />
             </Form.Group>
-            {selected === expectedAnswer ? "✔️" : "❌"}
+            <option> Your answer is: </option>
+            {input === expectedAnswer ? "✔️" : "❌"}
         </div>
     );
 }

@@ -12,23 +12,24 @@ export function MultipleChoiceQuestion({
     options: string[];
     expectedAnswer: string;
 }): JSX.Element {
-    const DEFAULT_OPTION = options[0];
-    const [option, setOption] = useState<string>(DEFAULT_OPTION);
-    function updateOption(event: ChangeEvent) {
-        setOption(event.target.value);
-    }
+    const [selected, setSelected] = useState<string>(options[0]);
+
+    const changeMCQ = (e: ChangeEvent) => {
+        setSelected(e.target.value);
+    };
     return (
         <div>
             <h3>Multiple Choice Question</h3>
-            <Form.Label>What is the right answer?</Form.Label>
-            <Form.Select value={option} onChange={updateOption}>
-                {options.map((option: string) => (
-                    <option key={option} value={option}>
-                        {options}
-                    </option>
-                ))}
-            </Form.Select>
-            <div>{option === expectedAnswer ? "✔️" : "❌"}.</div>
+            <Form.Group controlId="choiceDropdown">
+                <Form.Select value={selected} onChange={changeMCQ}>
+                    {options.map((choice: string) => (
+                        <option key={choice} value={choice}>
+                            {choice}
+                        </option>
+                    ))}
+                </Form.Select>
+            </Form.Group>
+            {selected === expectedAnswer ? "✔️" : "❌"}
         </div>
     );
 }
