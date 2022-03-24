@@ -15,7 +15,84 @@ PASS src/form-components/CheckAnswer.test.tsx
 PASS src/form-components/EditMode.test.tsx
 PASS src/components/ChangeType.test.tsx
 PASS src/components/CycleHoliday.test.tsx
-PASS src/form-components/GiveAttempts.test.tsx
+FAIL src/form-components/GiveAttempts.test.tsx
+  ● Console
+
+    console.error
+      Warning: Received NaN for the `value` attribute. If this is expected, cast the value to a string.
+          at input
+          at /home/runner/work/tasks/tasks/node_modules/react-bootstrap/cjs/FormControl.js:27:3
+          at div
+          at /home/runner/work/tasks/tasks/node_modules/react-bootstrap/cjs/FormGroup.js:19:3
+          at div
+          at GiveAttempts (/home/runner/work/tasks/tasks/src/form-components/GiveAttempts.tsx:9:45)
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:67:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:43:5)
+      at validateProperty$1 (node_modules/react-dom/cjs/react-dom.development.js:3492:7)
+      at warnUnknownProperties (node_modules/react-dom/cjs/react-dom.development.js:3559:21)
+      at validateProperties$2 (node_modules/react-dom/cjs/react-dom.development.js:3583:3)
+      at validatePropertiesInDevelopment (node_modules/react-dom/cjs/react-dom.development.js:8765:5)
+      at diffProperties (node_modules/react-dom/cjs/react-dom.development.js:9172:5)
+      at prepareUpdate (node_modules/react-dom/cjs/react-dom.development.js:10215:10)
+
+  ● GiveAttempts Component tests › Cannot gain blank amounts
+
+    TestingLibraryElementError: Unable to find an element with the text: /3/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<h3>[39m
+            [0mGive Attempts[0m
+          [36m</h3>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"requestedAttempts"[39m
+            [36m>[39m
+              [0mNumber of Requested Attempts:[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mid[39m=[32m"requestedAttempts"[39m
+              [33mtype[39m=[32m"number"[39m
+              [33mvalue[39m=[32m"NaN"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mUse[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mGain[0m
+          [36m</button>[39m
+          [0mNumber of Attempts Left: [0m
+          [0mNaN[0m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      42 |         fireEvent.change(amountToGive, { target: { value: "" } });
+      43 |         gain.click();
+    > 44 |         expect(screen.getByText(/3/i)).toBeInTheDocument();
+         |                       ^
+      45 |     });
+      46 | });
+      47 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/form-components/GiveAttempts.test.tsx:44:23)
+
 PASS src/form-components/ChangeColor.test.tsx
 PASS src/components/Counter.test.tsx
 PASS src/components/RevealAnswer.test.tsx
@@ -42,81 +119,84 @@ FAIL src/text.test.tsx
             [36m<h3>[39m
               [0mCheck Answer[0m
             [36m</h3>[39m
-            [36m<input[39m
-              [33mclass[39m=[32m"form-control"[39m
-              [33mvalue[39m=[32m""[39m
-            [36m/>[39m
             [36m<div>[39m
-              [0mYour answer is [0m
-              [0m❌[0m
-              [0m.[0m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"formCheckAnswer"[39m
+              [36m>[39m
+                [0mCheck your answer here: [0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"form-control"[39m
+                [33mid[39m=[32m"formCheckAnswer"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
             [36m</div>[39m
+            [36m<option>[39m
+              [0m Your answer is: [0m
+            [36m</option>[39m
+            [0m❌[0m
           [36m</div>[39m
           [36m<hr />[39m
           [36m<div>[39m
+            [36m<h3>[39m
+              [0mGive Attempts[0m
+            [36m</h3>[39m
             [36m<div>[39m
-              [36m<h3>[39m
-                [0mGive Attempts[0m
-              [36m</h3>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"requestedAttempts"[39m
+              [36m>[39m
+                [0mNumber of Requested Attempts:[0m
+              [36m</label>[39m
               [36m<input[39m
                 [33mclass[39m=[32m"form-control"[39m
+                [33mid[39m=[32m"requestedAttempts"[39m
                 [33mtype[39m=[32m"number"[39m
                 [33mvalue[39m=[32m"0"[39m
               [36m/>[39m
             [36m</div>[39m
-            [36m<div>[39m
-              [36m<span>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0muse[0m
-                [36m</button>[39m
-              [36m</span>[39m
-              [36m<span>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0mgain[0m
-                [36m</button>[39m
-              [36m</span>[39m
-            [36m</div>[39m
-            [36m<div>[39m
-              [0mYou have [0m
-              [0m3[0m
-              [0m attempts left.[0m
-            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mUse[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mGain[0m
+            [36m</button>[39m
+            [0mNumber of Attempts Left: [0m
+            [0m3[0m
           [36m</div>[39m
           [36m<hr />[39m
           [36m<div>[39m
             [36m<h3>[39m
               [0mEdit Mode[0m
             [36m</h3>[39m
-            [0mYour Name[0m
-            [0m is [0m
-            [0m[0m
-            [0m a student.[0m
             [36m<div>[39m
-              [36m<div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"form-check form-switch"[39m
-                [36m>[39m
-                  [36m<input[39m
-                    [33mclass[39m=[32m"form-check-input"[39m
-                    [33mid[39m=[32m"is-visible"[39m
-                    [33mtype[39m=[32m"checkbox"[39m
-                  [36m/>[39m
-                  [36m<label[39m
-                    [33mclass[39m=[32m"form-check-label"[39m
-                    [33mfor[39m=[32m"is-visible"[39m
-                    [33mtitle[39m=[32m""[39m
-                  [36m>[39m
-                    [0mEditMode Off[0m
-                  [36m</label>[39m
-                [36m</div>[39m
-              [36m</div>[39m
+              [0mYour Name[0m
+              [0m is [0m
               [0m [0m
+              [0ma student.[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"form-check form-switch"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"form-check-input"[39m
+                [33mid[39m=[32m"edit-check"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-check-label"[39m
+                [33mfor[39m=[32m"edit-check"[39m
+                [33mtitle[39m=[32m""[39m
+              [36m>[39m
+                [0mEdit Mode[0m
+              [36m</label>[39m
             [36m</div>[39m
           [36m</div>[39m
           [36m<hr />[39m
@@ -339,34 +419,29 @@ FAIL src/text.test.tsx
             [36m<h3>[39m
               [0mMultiple Choice Question[0m
             [36m</h3>[39m
-            [36m<label[39m
-              [33mclass[39m=[32m"form-label"[39m
-            [36m>[39m
-              [0mWhat is the right answer?[0m
-            [36m</label>[39m
-            [36m<select[39m
-              [33mclass[39m=[32m"form-select"[39m
-            [36m>[39m
-              [36m<option[39m
-                [33mvalue[39m=[32m"a"[39m
-              [36m>[39m
-                [0mabc[0m
-              [36m</option>[39m
-              [36m<option[39m
-                [33mvalue[39m=[32m"b"[39m
-              [36m>[39m
-                [0mabc[0m
-              [36m</option>[39m
-              [36m<option[39m
-                [33mvalue[39m=[32m"c"[39m
-              [36m>[39m
-                [0mabc[0m
-              [36m</option>[39m
-            [36m</select>[39m
             [36m<div>[39m
-              [0m❌[0m
-              [0m.[0m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"choiceDropdown"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"a"[39m
+                [36m>[39m
+                  [0ma[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"b"[39m
+                [36m>[39m
+                  [0mb[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"c"[39m
+                [36m>[39m
+                  [0mc[0m
+                [36m</option>[39m
+              [36m</select>[39m
             [36m</div>[39m
+            [0m❌[0m
           [36m</div>[39m
           [36m<hr />[39m
           [36m<div>[39m
@@ -680,7 +755,7 @@ PASS src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   99.13 |    98.93 |     100 |    99.1 |                   
+All files                    |   99.11 |    98.88 |     100 |   99.09 |                   
  src                         |   99.26 |      100 |     100 |   99.22 |                   
   App.tsx                    |     100 |      100 |     100 |     100 |                   
   arrays.ts                  |   97.95 |      100 |     100 |   97.82 | 14                
@@ -712,6 +787,64 @@ All files                    |   99.13 |    98.93 |     100 |    99.1 |
 -----------------------------|---------|----------|---------|---------|-------------------
 
 Summary of all failing tests
+FAIL src/form-components/GiveAttempts.test.tsx
+  ● GiveAttempts Component tests › Cannot gain blank amounts
+
+    TestingLibraryElementError: Unable to find an element with the text: /3/i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+    Ignored nodes: comments, <script />, <style />
+    [36m<body>[39m
+      [36m<div>[39m
+        [36m<div>[39m
+          [36m<h3>[39m
+            [0mGive Attempts[0m
+          [36m</h3>[39m
+          [36m<div>[39m
+            [36m<label[39m
+              [33mclass[39m=[32m"form-label"[39m
+              [33mfor[39m=[32m"requestedAttempts"[39m
+            [36m>[39m
+              [0mNumber of Requested Attempts:[0m
+            [36m</label>[39m
+            [36m<input[39m
+              [33mclass[39m=[32m"form-control"[39m
+              [33mid[39m=[32m"requestedAttempts"[39m
+              [33mtype[39m=[32m"number"[39m
+              [33mvalue[39m=[32m"NaN"[39m
+            [36m/>[39m
+          [36m</div>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mUse[0m
+          [36m</button>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"btn btn-primary"[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mGain[0m
+          [36m</button>[39m
+          [0mNumber of Attempts Left: [0m
+          [0mNaN[0m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</body>[39m
+
+      42 |         fireEvent.change(amountToGive, { target: { value: "" } });
+      43 |         gain.click();
+    > 44 |         expect(screen.getByText(/3/i)).toBeInTheDocument();
+         |                       ^
+      45 |     });
+      46 | });
+      47 |
+
+      at Object.getElementError (node_modules/@testing-library/dom/dist/config.js:38:19)
+      at node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+      at node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+      at getByText (node_modules/@testing-library/dom/dist/query-helpers.js:111:19)
+      at Object.<anonymous> (src/form-components/GiveAttempts.test.tsx:44:23)
+
 FAIL src/text.test.tsx
   ● renders the text 'Hello World' somewhere
 
@@ -733,81 +866,84 @@ FAIL src/text.test.tsx
             [36m<h3>[39m
               [0mCheck Answer[0m
             [36m</h3>[39m
-            [36m<input[39m
-              [33mclass[39m=[32m"form-control"[39m
-              [33mvalue[39m=[32m""[39m
-            [36m/>[39m
             [36m<div>[39m
-              [0mYour answer is [0m
-              [0m❌[0m
-              [0m.[0m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"formCheckAnswer"[39m
+              [36m>[39m
+                [0mCheck your answer here: [0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"form-control"[39m
+                [33mid[39m=[32m"formCheckAnswer"[39m
+                [33mvalue[39m=[32m""[39m
+              [36m/>[39m
             [36m</div>[39m
+            [36m<option>[39m
+              [0m Your answer is: [0m
+            [36m</option>[39m
+            [0m❌[0m
           [36m</div>[39m
           [36m<hr />[39m
           [36m<div>[39m
+            [36m<h3>[39m
+              [0mGive Attempts[0m
+            [36m</h3>[39m
             [36m<div>[39m
-              [36m<h3>[39m
-                [0mGive Attempts[0m
-              [36m</h3>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+                [33mfor[39m=[32m"requestedAttempts"[39m
+              [36m>[39m
+                [0mNumber of Requested Attempts:[0m
+              [36m</label>[39m
               [36m<input[39m
                 [33mclass[39m=[32m"form-control"[39m
+                [33mid[39m=[32m"requestedAttempts"[39m
                 [33mtype[39m=[32m"number"[39m
                 [33mvalue[39m=[32m"0"[39m
               [36m/>[39m
             [36m</div>[39m
-            [36m<div>[39m
-              [36m<span>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0muse[0m
-                [36m</button>[39m
-              [36m</span>[39m
-              [36m<span>[39m
-                [36m<button[39m
-                  [33mclass[39m=[32m"btn btn-primary"[39m
-                  [33mtype[39m=[32m"button"[39m
-                [36m>[39m
-                  [0mgain[0m
-                [36m</button>[39m
-              [36m</span>[39m
-            [36m</div>[39m
-            [36m<div>[39m
-              [0mYou have [0m
-              [0m3[0m
-              [0m attempts left.[0m
-            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mUse[0m
+            [36m</button>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mGain[0m
+            [36m</button>[39m
+            [0mNumber of Attempts Left: [0m
+            [0m3[0m
           [36m</div>[39m
           [36m<hr />[39m
           [36m<div>[39m
             [36m<h3>[39m
               [0mEdit Mode[0m
             [36m</h3>[39m
-            [0mYour Name[0m
-            [0m is [0m
-            [0m[0m
-            [0m a student.[0m
             [36m<div>[39m
-              [36m<div>[39m
-                [36m<div[39m
-                  [33mclass[39m=[32m"form-check form-switch"[39m
-                [36m>[39m
-                  [36m<input[39m
-                    [33mclass[39m=[32m"form-check-input"[39m
-                    [33mid[39m=[32m"is-visible"[39m
-                    [33mtype[39m=[32m"checkbox"[39m
-                  [36m/>[39m
-                  [36m<label[39m
-                    [33mclass[39m=[32m"form-check-label"[39m
-                    [33mfor[39m=[32m"is-visible"[39m
-                    [33mtitle[39m=[32m""[39m
-                  [36m>[39m
-                    [0mEditMode Off[0m
-                  [36m</label>[39m
-                [36m</div>[39m
-              [36m</div>[39m
+              [0mYour Name[0m
+              [0m is [0m
               [0m [0m
+              [0ma student.[0m
+            [36m</div>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"form-check form-switch"[39m
+            [36m>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"form-check-input"[39m
+                [33mid[39m=[32m"edit-check"[39m
+                [33mtype[39m=[32m"checkbox"[39m
+              [36m/>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-check-label"[39m
+                [33mfor[39m=[32m"edit-check"[39m
+                [33mtitle[39m=[32m""[39m
+              [36m>[39m
+                [0mEdit Mode[0m
+              [36m</label>[39m
             [36m</div>[39m
           [36m</div>[39m
           [36m<hr />[39m
@@ -1030,34 +1166,29 @@ FAIL src/text.test.tsx
             [36m<h3>[39m
               [0mMultiple Choice Question[0m
             [36m</h3>[39m
-            [36m<label[39m
-              [33mclass[39m=[32m"form-label"[39m
-            [36m>[39m
-              [0mWhat is the right answer?[0m
-            [36m</label>[39m
-            [36m<select[39m
-              [33mclass[39m=[32m"form-select"[39m
-            [36m>[39m
-              [36m<option[39m
-                [33mvalue[39m=[32m"a"[39m
-              [36m>[39m
-                [0mabc[0m
-              [36m</option>[39m
-              [36m<option[39m
-                [33mvalue[39m=[32m"b"[39m
-              [36m>[39m
-                [0mabc[0m
-              [36m</option>[39m
-              [36m<option[39m
-                [33mvalue[39m=[32m"c"[39m
-              [36m>[39m
-                [0mabc[0m
-              [36m</option>[39m
-            [36m</select>[39m
             [36m<div>[39m
-              [0m❌[0m
-              [0m.[0m
+              [36m<select[39m
+                [33mclass[39m=[32m"form-select"[39m
+                [33mid[39m=[32m"choiceDropdown"[39m
+              [36m>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"a"[39m
+                [36m>[39m
+                  [0ma[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"b"[39m
+                [36m>[39m
+                  [0mb[0m
+                [36m</option>[39m
+                [36m<option[39m
+                  [33mvalue[39m=[32m"c"[39m
+                [36m>[39m
+                  [0mc[0m
+                [36m</option>[39m
+              [36m</select>[39m
             [36m</div>[39m
+            [0m❌[0m
           [36m</div>[39m
           [36m<hr />[39m
           [36m<div>[39m
@@ -1368,8 +1499,8 @@ FAIL src/text.test.tsx
       at Object.<anonymous> (src/text.test.tsx:7:26)
 
 
-Test Suites: 1 failed, 20 passed, 21 total
-Tests:       1 failed, 134 passed, 135 total
+Test Suites: 2 failed, 19 passed, 21 total
+Tests:       2 failed, 133 passed, 135 total
 Snapshots:   0 total
-Time:        13.258 s
+Time:        15.424 s
 Ran all test suites.
